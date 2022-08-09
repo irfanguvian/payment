@@ -5,7 +5,7 @@ async function paymentNotification(req: Request, res: Response) {
   let status = true;
   let msg = "Successfully get snap";
   const data = body;
-  console.log(body);
+  console.log(body, "dari payment");
 
   try {
     return {

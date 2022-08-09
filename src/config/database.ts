@@ -17,6 +17,12 @@ const db = {
 
 const connectionDB = new Sequelize(db.database, db.username, db.password, {
   dialect: "postgres",
+  dialectOptions: process.env.APP_ENV === "production" ? {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  } : {},
   host: db.host,
   port: db.port,
   password: db.password,

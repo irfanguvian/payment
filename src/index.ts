@@ -5,7 +5,7 @@ dotenv.config();
 
 process.env.APP_VERSION = require("../package.json").version;
 
-const appPort = (process.env.APP_PORT || 8080);
+const appPort = (process.env.PORT || 8080);
 
 process.once("uncaughtException", (err) => {
   console.error(err);

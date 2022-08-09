@@ -3,13 +3,16 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
+	"engines": {
+		"node": "16.11.1"
+		},
 	"scripts": {
 		"lint": "eslint . --ext .ts",
 		"pretty": "prettier --write 'src/**/*.ts",
 		"precommit": "lint-staged",
 		"prepare": "husky install",
 		"build": " (rimraf build/* ; tsc)",
-		"start": "NODE_PATH=build/ node --max-old-space-size=512 -r dotenv/config build/src/index.js",
+		"start": "NODE_PATH=build/ node build/src/index.js",
 		"dev": "ts-node-dev --respawn --transpile-only src/app.ts"
 	},
 	"dependencies": {

@@ -1,3 +1,6 @@
+import express from "express";
+import handlerFComposerHash from "../../handler";
+
 /**
  * @openapi
  * /example/post:
@@ -30,17 +33,14 @@
  *         - username
  *         - password
  */
-function postUserAuthRouterComposer(diHash : any) {
-  const {
-    express,
-    handlerFcomposerHash,
-  } = diHash;
+function postUserAuthRouterComposer() {
+
   const expressRouter = express.Router();
-  const handlerFcomposer = handlerFcomposerHash.postExampleHandler;
+  const handlerFcomposer = handlerFComposerHash.postHandlerFcomposer;
 
   const routerPath = "/example/post";
   // expressRouter.use(routerPath, middlewareHash.standardMiddlewareList);
-  expressRouter.post(routerPath, handlerFcomposer(diHash));
+  expressRouter.post(routerPath, handlerFcomposer());
 
   return expressRouter;
 }

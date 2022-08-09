@@ -1,3 +1,5 @@
+import express from "express";
+import handlerFComposerHash from "../../handler";
 /**
  * @openapi
  * /example/{id}:
@@ -19,19 +21,16 @@
  *     tags:
  *       - example
  */
-function getExampleRouterComposer(diHash : any) {
-  const {
-    express,
-    handlerFcomposerHash,
-  } = diHash;
+function getExampleRouterComposer() {
+
   const expressRouter = express.Router();
-  const handlerFcomposer = handlerFcomposerHash.getExampleHandler;
+  const handlerFcomposer = handlerFComposerHash.getHandlerFcomposer;
 
   const routerPath = "/example/:id";
   //   expressRouter.use(routerPath, middlewareHash);
   expressRouter.get(
     routerPath,
-    handlerFcomposer(diHash),
+    handlerFcomposer(),
   );
   return expressRouter;
 }

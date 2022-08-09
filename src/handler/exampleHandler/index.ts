@@ -1,11 +1,11 @@
-import getExampleHandler from "./getHandlerFcomposer";
-import getExampleListHandler from "./getListHandlerFcomposer";
-import postExampleHandler from "./postHandlerFcomposer";
+import getHandlerFcomposer from "./getHandlerFcomposer";
+import getListHandlerFcomposer from "./getListHandlerFcomposer";
+import postHandlerFcomposer from "./postHandlerFcomposer";
 
 const functionFcomposerHash = {
-  getExampleHandler,
-  getExampleListHandler,
-  postExampleHandler,
+  getHandlerFcomposer,
+  getListHandlerFcomposer,
+  postHandlerFcomposer,
 };
 
 export default functionFcomposerHash;

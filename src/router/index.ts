@@ -1,6 +1,9 @@
 // import goes here
 import exampleRouteFcomposer from "./exampleRoute";
-
+import midtransRouterComposer from "./midtrans";
+import notificationRouterComposer from "./notification";
+import orderRouterComposer from "./order";
+import express from "express";
 /**
  * @openapi
  * components:
@@ -14,16 +17,22 @@ import exampleRouteFcomposer from "./exampleRoute";
  *        scheme: bearer
  */
 
-function routerFcomposer(diHash : any) {
-  const {
-    express,
-  } = diHash;
+function routerFcomposer() {
 
   const expressRouter = express.Router();
 
   // example
-  const exampleRoute = exampleRouteFcomposer(diHash);
+  const exampleRoute = exampleRouteFcomposer();
   expressRouter.use(exampleRoute);
+
+  const midtransRoute = midtransRouterComposer();
+  expressRouter.use(midtransRoute);
+
+  const notificationRoute = notificationRouterComposer();
+  expressRouter.use(notificationRoute);
+
+  const orderRoute = orderRouterComposer();
+  expressRouter.use(orderRoute);
 
   return expressRouter;
 }

@@ -7,7 +7,6 @@ import SwaggerUiExpress from "swagger-ui-express";
 import { version } from "../package.json";
 // internal dependencies
 import routerFcomposer from "./router";
-import handlerFcomposerHash from "./handler";
 
 // app registration
 // const env = {
@@ -16,11 +15,7 @@ import handlerFcomposerHash from "./handler";
 // };
 const app = express();
 
-const diHash = {
-  express,
-  handlerFcomposerHash,
-};
-const router = routerFcomposer(diHash);
+const router = routerFcomposer();
 app.use("/v1", router);
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(cors());

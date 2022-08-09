@@ -18,8 +18,8 @@ async function createOrder(req: Request, res: Response) {
     address: "",
     type: "",
     orderStatus: 1,
-    paymentType: null,
-    expiredDate: moment().add(15, "minutes").format("DDMMYYYY"),
+    paymentType: 1,
+    expiredDate: moment().add(15, "minutes").format("YYYY-MM-DD hh:mm:ss"),
     paidDate: null,
     amount: 0,
     discountPercentage: 0,
@@ -33,7 +33,7 @@ async function createOrder(req: Request, res: Response) {
     // cek typenya dulu buat dapet transaction fee
     // final amount dari kita
 
-    if (!lodash.isNil(body.userId) && lodash.isEmpty(body.userId)) argsOrderInput.userId = body.userId;
+    if (!lodash.isNil(body?.userId) && lodash.isEmpty(body?.userId)) argsOrderInput.userId = body?.userId;
     if (!lodash.isNil(body.firstName) && lodash.isEmpty(body.firstName)) argsOrderInput.firstName = body.firstName;
     if (!lodash.isNil(body.lastName) && lodash.isEmpty(body.lastName)) argsOrderInput.lastName = body.lastName;
     if (!lodash.isNil(body.email) && lodash.isEmpty(body.email)) argsOrderInput.email = body.email;

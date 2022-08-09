@@ -16,11 +16,12 @@ import routerFcomposer from "./router";
 const app = express();
 
 const router = routerFcomposer();
-app.use("/v1", router);
-app.use(express.static(path.join(__dirname, "/public")));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "/public")));
+app.use("/v1", router);
+
 // Error handler registration
 // --------------------------
 app.use((err: any, req : Request, res: Response, next :NextFunction) => {
@@ -36,7 +37,7 @@ const swaggerJsdocOptions : swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "str-backend",
+      title: "payment-timti",
       version,
       // version: env.APP_VERSION,
     },

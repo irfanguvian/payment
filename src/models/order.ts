@@ -43,13 +43,13 @@ export default connectionDB.define(
       field: "last_name", type: DataTypes.STRING, allowNull: false,
     },
     email: {
-      field: "email", type: DataTypes.STRING, allowNull: false,
+      field: "email", type: DataTypes.STRING, allowNull: true,
     },
     phone: {
-      field: "phone", type: DataTypes.STRING, allowNull: false,
+      field: "phone", type: DataTypes.STRING, allowNull: true,
     },
     address: {
-      field: "address", type: DataTypes.STRING, allowNull: false,
+      field: "address", type: DataTypes.STRING, allowNull: true,
     },
     type: {
       field: "type", type: DataTypes.STRING, allowNull: false, // ECOMMERCE, AUCTION, PPOB, SERVICE(SERVICE A, B, C, D)
@@ -61,31 +61,32 @@ export default connectionDB.define(
       field: "payment_type", type: DataTypes.INTEGER, // credit_card, bank_payment, gopay, dll sesuai midtrans, bikin tabel, cek midtrans
     },
     expiredDate: {
-      field: "expired_time", type: DataTypes.STRING, allowNull: false, // expired
+      field: "expired_time", type: DataTypes.STRING, allowNull: true, // expired
     },
     paidDate: {
-      field: "paid_time", type: DataTypes.STRING, allowNull: false,
+      field: "paid_time", type: DataTypes.STRING, allowNull: true,
     },
     amount: {
       field: "amount", type: DataTypes.INTEGER, allowNull: false,
     },
     discountPercentage: {
-      field: "discount_percentage", type: DataTypes.INTEGER, allowNull: false,
+      field: "discount_percentage", type: DataTypes.INTEGER, allowNull: true,
     },
     discountAmount: {
-      field: "discount_amount", type: DataTypes.INTEGER, allowNull: false,
+      field: "discount_amount", type: DataTypes.INTEGER, allowNull: true,
     },
     transactionFee: {
-      field: "transaction_fee", type: DataTypes.INTEGER, allowNull: false,
+      field: "transaction_fee", type: DataTypes.INTEGER, allowNull: true,
     },
     finalAmount: {
-      field: "finalAmount", type: DataTypes.INTEGER, allowNull: false,
+      field: "final_amount", type: DataTypes.INTEGER, allowNull: false,
     },
     paymentCallback: {
-      field: "payment_callback", type: DataTypes.STRING, allowNull: false,
+      field: "payment_callback", type: DataTypes.STRING, allowNull: true,
     },
   },
   {
     tableName: "order",
+    timestamps: false,
   },
 );

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import models from "../../models";
 import Axios from "axios";
-import moment from "moment-timezone";
+// import moment from "moment-timezone";
 import { orderType } from "../../models/order";
 import lodash from "lodash";
 
@@ -81,12 +81,7 @@ async function snapTransaction(req: Request, res: Response) {
       "callback_url": "http://gopay.com",
     },
     "callbacks": {
-      "finish": "https://demo.midtrans.com",
-    },
-    "expiry": {
-      "start_time": moment().format("YYYY-MM-DD hh:mm:ss"),
-      "unit": "minutes",
-      "duration": 15,
+      "finish": "http://localhost:8080",
     },
   };
   let status = true;
@@ -134,9 +129,9 @@ async function snapTransaction(req: Request, res: Response) {
       msg = "Order not found";
     }
     validBody.transaction_details.order_id = getOrder.orderNumber;
-    validBody.transaction_details.gross_amount = getOrder.finalAmount;
+    validBody.transaction_details.gross_amount = 100000;
 
-    Axios.post(url, validBody, {
+    await Axios.post(url, validBody, {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -150,7 +145,6 @@ async function snapTransaction(req: Request, res: Response) {
     });
 
   } catch (error : any) {
-    console.log(error);
     status = false;
     msg = "Terjadi kesalahan silahkan coba beberapa saat lagi";
   }

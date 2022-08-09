@@ -16,8 +16,12 @@ export default connectionDB.define(
     event: {
       field: "event", type: DataTypes.STRING, allowNull: false,
     },
+    createdAt: {
+      field: "created_at", type: DataTypes.DATE,
+    },
   },
   {
-    tableName: "log",
+    tableName: "log_event",
+    timestamps: false,
   },
 );

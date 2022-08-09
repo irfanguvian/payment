@@ -52,9 +52,6 @@ import handlerFComposerHash from "../../handler";
  *         transactionFee:
  *           description: transactionFee of payment
  *           type: string
- *       required:
- *         - username
- *         - password
  */
 function createOrderRoute() {
 

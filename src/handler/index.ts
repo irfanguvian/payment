@@ -14,6 +14,8 @@ interface handlerComposerHash {
   paymentNotification: any
   unfinishRedirectNotification: any
   createOrder: any
+  getAllOrder: any
+  getOrder: any
 }
 
 const handlerComposerList: Array<any> = [
@@ -34,6 +36,8 @@ const handlerFComposerHash : handlerComposerHash = {
   getHandlerFcomposer: undefined,
   getListHandlerFcomposer: undefined,
   postHandlerFcomposer: undefined,
+  getAllOrder: undefined,
+  getOrder: undefined,
 };
 
 handlerComposerList.forEach(handler => {

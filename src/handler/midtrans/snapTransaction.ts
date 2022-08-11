@@ -98,6 +98,7 @@ async function snapTransaction(req: Request, res: Response) {
     const url = "https://app.sandbox.midtrans.com/snap/v1/transactions";
     // const merchantId = "G885028912";
     // const clientKey = "SB-Mid-client-3rK4xma2O92-ZUId";
+
     const serverKey = "SB-Mid-server-cRMF3qOqNFbJe-kAcOZPeYMk";
     const authorization = Buffer.from(`${serverKey}:`).toString("base64");
 
@@ -129,7 +130,7 @@ async function snapTransaction(req: Request, res: Response) {
       msg = "Order not found";
     }
     validBody.transaction_details.order_id = getOrder.orderNumber;
-    validBody.transaction_details.gross_amount = 100000;
+    validBody.transaction_details.gross_amount = getOrder.finalAmount;
 
     await Axios.post(url, validBody, {
       headers: {
@@ -142,6 +143,10 @@ async function snapTransaction(req: Request, res: Response) {
         data.token = resp.data.token;
         data.redirect_url = resp.data.redirect_url;
       }
+    }).catch((err) => {
+      status = false;
+      msg = "Terjadi kesalahan silahkan coba beberapa saat lagi";
+      console.log(err.data, "catch");
     });
 
   } catch (error : any) {
@@ -157,3 +162,15 @@ async function snapTransaction(req: Request, res: Response) {
 }
 
 export default snapTransaction;
+
+// //Name of the file : sha512-hash.js
+// //Loading the crypto module in node.js
+// var crypto = require('crypto');
+// //creating hash object
+// var hash = crypto.createHash('sha512');
+// //passing the data to be hashed
+// data = hash.update('nodejsera', 'utf-8');
+// //Creating the hash in the required format
+// gen_hash= data.digest('hex');
+// //Printing the output on the console
+// console.log("hash : " + gen_hash);

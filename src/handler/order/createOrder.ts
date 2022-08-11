@@ -10,7 +10,7 @@ async function createOrder(req: Request, res: Response) {
   let data : any = {};
   const argsOrderInput = {
     userId: 0,
-    orderNumber: `TIMTI-${moment().format("DDMMYYYY")}`,
+    orderNumber: `INV/${moment().format("DDMMYYYY")}/ECM/${moment().format("x")}`,
     firstName: "",
     lastName: "",
     email: "",
